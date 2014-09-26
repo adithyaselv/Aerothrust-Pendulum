@@ -1,4 +1,4 @@
-Aero-penddullum
+Aero-pendulum
 ===============
 
 Implementation of aero pendulum using arduino.
