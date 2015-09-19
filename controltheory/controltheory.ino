@@ -15,6 +15,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+
+//Assigning x,y and z pins of ADXL 345 to A0,A1,A2
 const int xPin = A0;
 const int yPin = A1;
 const int zPin = A2;
@@ -29,8 +31,8 @@ int xAng;
 int yAng;
 int zAng;
 int SETANGLE=10;
-float previ=0;
-float i=0;
+float prevspeed=0;
+float speed=0;
 void setup()
 {
   Serial.begin(9600);
@@ -66,15 +68,15 @@ void loop()
   if(j==9)
   filteredp = filteredp/10;
   }
-  oplangle=(0.001*previ*previ)+(0.21*previ)-6.5;
+  oplangle=(0.001*prevspeed*prevspeed)+(0.21*prevspeed)-6.5;
   filteredc=(filteredp+oplangle)/2;
   error=SETANGLE-(int(filteredc));
-  i = i+(error*Kp);
-  analogWrite(3,byte(i));
+  speed = speed+(error*Kp);
+  analogWrite(3,byte(speed));
   Serial.print(filteredc);
   Serial.print("  ");
   Serial.print(error);
   Serial.print("  ");
-  Serial.println(i);
-  previ=i;
+  Serial.println(speed);
+  prevspeed=speed;
 }

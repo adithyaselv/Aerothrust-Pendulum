@@ -25,7 +25,9 @@ double Ki=0.0000;
 float integral;
 int SETANGLE=0;
 float preverror=0;
-float i=22;
+
+//Motor starts only at 22 -- Deadband 
+float motor_speed=22;
 void setup()
 {
   Serial.begin(9600);
@@ -53,14 +55,14 @@ void loop()
   integral += error;
   if(integral>1000)
   integral=1000;
-  i = i+(error*Kp)+((error-preverror)*Kd)+(integral*Ki);
-  if(i>220||i<0)
-  i=190;
-  analogWrite(3,byte(i));
+  motor_speed = motor_speed+(error*Kp)+((error-preverror)*Kd)+(integral*Ki);
+  if(motor_speed>220||motor_speed<0)
+  motor_speed=190;
+  analogWrite(3,byte(motor_speed));
   Serial.print(map_pot);
   Serial.print("  ");
   Serial.print(error);
   Serial.print("  ");
-  Serial.println(i);
+  Serial.println(motor_speed);
   preverror=error;
 }

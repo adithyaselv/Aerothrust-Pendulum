@@ -17,7 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 const int potPin = A4;
-byte i=0;
+byte motor_speed=0;
 int potVal;
 void setup()
 {
@@ -40,31 +40,32 @@ void loop()
   if (digitalRead(9)==0)
   {
   {
-    i++;
+    motor_speed++;
   }
     delay(50);//debounce
   }
   if (digitalRead(8)==0)
   {
   {
-    i--;
+    motor_speed--;
   }
     delay(50);//debounce
   }
   if (digitalRead(7)==0)
   {
   {
-    i=0;
+    motor_speed=0;
   }
     delay(50);//debounce
   }
-  if(i>160||i<0)
-  i=120;
-  analogWrite(3,i);
+  if(motor_speed>160||motor_speed<0)
+  motor_speed=120;
+  analogWrite(3,motor_speed);
+  
   Serial.print(potVal);
   Serial.print("   ");
   Serial.print(map_pot);
   Serial.print("   ");
-  Serial.println(i);
+  Serial.println(motor_speed);
   delay(20);
 }
