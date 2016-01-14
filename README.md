@@ -3,7 +3,7 @@ Aero-pendulum
 
 Implementation of Aero pendulum using arduino.
 
-This is an educational project which helps students to understand the basics of control theory and is primarily based on the work of Eniko T. Enikov, Associate Professor, University of Arizona [Link](http://aeropendulum.arizona.edu/)
+This is an Arduino implementation of an educational project which helps students to understand the basics of control theory and is primarily based on the work of Eniko T. Enikov, Associate Professor, University of Arizona [Link](http://aeropendulum.arizona.edu/)
 
 Hardware Used:
 
